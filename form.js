@@ -17,6 +17,8 @@ window.addEventListener('DOMContentLoaded', () => {
         })
 
         
+
+        
 })
 
 function disp(e){
@@ -56,8 +58,25 @@ function showUserOnScreen(obj){
     del.value='Delete'
     
     del.onclick=()=>{
-        localStorage.removeItem(obj.email)
-        parentEl.removeChild(childEl)
+        axios.get("https://crudcrud.com/api/d96ad741cb834944901afe8df63e9346/data")
+        .then((response) => {
+            console.log(response)
+
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+        axios.delete(`https://crudcrud.com/api/d96ad741cb834944901afe8df63e9346/data/${obj._id}`)
+            .then((respone) => {
+                parentEl.removeChild(childEl)
+            }).catch((err) => {
+                console.log(err)
+            })
+
+            
+        // localStorage.removeItem(obj.email)
+        
     }
 
     edit.onclick=()=>{
