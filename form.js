@@ -57,15 +57,7 @@ function showUserOnScreen(obj){
     del.type='button'
     del.value='Delete'
     
-    del.onclick=()=>{
-        axios.get("https://crudcrud.com/api/d96ad741cb834944901afe8df63e9346/data")
-        .then((response) => {
-            console.log(response)
-
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+    var delUser = del.onclick=()=>{
 
         axios.delete(`https://crudcrud.com/api/d96ad741cb834944901afe8df63e9346/data/${obj._id}`)
             .then((respone) => {
@@ -88,7 +80,9 @@ function showUserOnScreen(obj){
         em.value=obj.email
         // cat.value=obj.category
 
-        localStorage.removeItem(obj.email)
+        delUser()
+
+        // localStorage.removeItem(obj.email)
         parentEl.removeChild(childEl)
 
     }
